@@ -8,7 +8,7 @@ Run the following to print a NNF formula to stdout
 ```
 python3 gen_form.py
 ```
-
+* Positive integers are used to denote a unique proposition
 * '-' is used to denote logical negation
 * '.' is used to denote logical and
 * '+' is used to denote logical inclusive or
