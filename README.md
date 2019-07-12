@@ -6,7 +6,7 @@ Requires Python3
 Run the following to print a NNF formula to stdout
 
 ```
-python3 gen_form.py
+python3 gen_form.py [path]
 ```
 * Positive integers are used to denote a unique proposition
 * '-' is used to denote logical negation
@@ -17,4 +17,4 @@ For example the output: '((-3) + (1 . (-5)))' denotes:
 
 ((NEG X3) OR (X1 AND (NEG X5)))
 
-The generator will always output a valid NNF formula that is fully parentisized. 
+The generator will always output a valid NNF formula that is fully parenthesized.

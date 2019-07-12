@@ -1,4 +1,5 @@
-import random
+import random, sys, os
+
 def gen_form(depth = None, max_depth=10,num_literals=5):
     if random.random() < 0.2 or depth == max_depth:
         neg = random.random() > 0.5
@@ -6,7 +7,7 @@ def gen_form(depth = None, max_depth=10,num_literals=5):
         if neg:
             return "(-" + str(lit) + ")"
         else:
-            return str(lit) 
+            return str(lit)
     else:
         d = depth
         if d == None:
@@ -20,5 +21,18 @@ def gen_form(depth = None, max_depth=10,num_literals=5):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        directory = os.path.dirname('./')
+    elif len(sys.argv) == 2:
+        directory = os.path.dirname(sys.argv[1])
+    else:
+        printf('Too many arguments, using the current directory')
+        directory = os.path.dirname('./')
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     for i in range(10):
-        print(gen_form())
+        NNF_STRING = gen_form()
+        file_name = "fuzzy_testcase_" + str(i) + ".nnf"
+        file_path = os.path.join(directory, file_name)
+        fp = open(file_path, "w+")
+        fp.write(NNF_STRING + ' 0')
